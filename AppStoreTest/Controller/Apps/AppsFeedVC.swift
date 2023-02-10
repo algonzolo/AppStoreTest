@@ -8,13 +8,10 @@
 import UIKit
 
 class AppsFeedVC: BaseListController {
-    let cellID = "id"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = .yellow
-
-        collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: AppsGroupCell.id)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -22,9 +19,12 @@ class AppsFeedVC: BaseListController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AppsGroupCell
-        cell.backgroundColor = .lightGray
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsGroupCell.id, for: indexPath) as! AppsGroupCell
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return .init(top: 16, left: 0, bottom: 0, right: 0)
     }
 }
 
@@ -32,5 +32,7 @@ extension AppsFeedVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: view.frame.width, height: 250)
     }
+
+
 
 }

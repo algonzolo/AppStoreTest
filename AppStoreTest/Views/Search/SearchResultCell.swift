@@ -9,6 +9,8 @@ import UIKit
 
 class SearchResultCell: UICollectionViewCell {
 
+    static let id = "SearchResultCell"
+
     var appResult: Result! {
         didSet {
             nameLabel.text = appResult.trackName
@@ -47,7 +49,7 @@ class SearchResultCell: UICollectionViewCell {
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
         button.widthAnchor.constraint(equalToConstant: 80).isActive = true
         button.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        button.backgroundColor = UIColor(red: 49.0/255.0, green: 49.0/255.0, blue: 49.0/255.0, alpha: 0.1)
+        button.backgroundColor = UIColor(white: 0.95, alpha: 1)
         button.layer.cornerRadius = 16
         return button
     }()

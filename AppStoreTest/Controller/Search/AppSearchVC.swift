@@ -11,7 +11,6 @@ import SDWebImage
 class AppSearchVC: BaseListController, UISearchBarDelegate {
 
     fileprivate let searchController = UISearchController(searchResultsController: nil)
-    fileprivate var cellID = "123"
     fileprivate var appResults = [Result]()
     var timer: Timer?
 
@@ -21,7 +20,7 @@ class AppSearchVC: BaseListController, UISearchBarDelegate {
         super.viewDidLoad()
 
         collectionView.backgroundColor = .white
-        collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: cellID)
+        collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: SearchResultCell.id)
         collectionView.addSubview(searchTermLabel)
         searchTermLabel.fillSuperview(padding: .init(top: 100, left: 50, bottom: 0, right: 50))
         setupSearchBar()
@@ -61,7 +60,7 @@ class AppSearchVC: BaseListController, UISearchBarDelegate {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! SearchResultCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchResultCell.id, for: indexPath) as! SearchResultCell
         cell.appResult = appResults[indexPath.item]
         return cell
     }
